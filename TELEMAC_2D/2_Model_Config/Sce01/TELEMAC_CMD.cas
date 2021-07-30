@@ -1,0 +1,148 @@
+/
+/  GIRONDE ESTUARY
+/
+/  Version 6.3
+/
+/  HP Linux Calibre 7 compilateur Nag 8 processeurs : 28 min 7 s  22/05/2012
+/
+/
+/----------------------------------------------------------------------
+/                      FILE DEFINITION
+/----------------------------------------------------------------------
+/
+BOUNDARY CONDITIONS FILE 	: Boundaries_Sce01.cli
+GEOMETRY FILE              	: Geo_Mesh.slf
+FORTRAN FILE                : 'user_fortran'
+RESULTS FILE 				: 'user_output/SABay_sce01.res'
+ASCII ATMOSPHERIC DATA FILE   : 'CSV_files/Wind.txt'
+/
+/
+/----------------------------------------------------------------------
+/                        GENERAL OPTIONS
+/----------------------------------------------------------------------
+/
+TITLE : 'San Antonio ESTUARY'
+/
+VARIABLES FOR GRAPHIC PRINTOUTS             : 'H,U,V,B,T1,S'
+/
+ORIGINAL DATE OF TIME                       : 1987;01;01
+ORIGINAL HOUR OF TIME                       : 0;0;0
+TIME STEP                                   : 300
+NUMBER OF TIME STEPS                        : 2839968
+GRAPHIC PRINTOUT PERIOD                     : 288
+LISTING PRINTOUT PERIOD                     : 144
+MASS-BALANCE                                : YES
+/INFORMATION ABOUT SOLVER                   : YES
+/
+/
+/----------------------------------------------------------------------
+/                    BOUNDARY CONDITIONS
+/----------------------------------------------------------------------
+/
+PRESCRIBED FLOWRATES            : 0.;0.
+PRESCRIBED TRACERS VALUES       : 35.0;35.0
+VELOCITY PROFILES               : 4;4
+/OPTION FOR LIQUID BOUNDARIES    : 1
+/
+/
+/----------------------------------------------------------------------
+/                      INITIAL CONDITIONS
+/----------------------------------------------------------------------
+/
+INITIAL CONDITIONS                          :'CONSTANT ELEVATION'
+INITIAL ELEVATION                           : 2.5D0
+/
+/
+/----------------------------------------------------------------------
+/                   PHYSICAL PARAMETERS DEFINITION
+/----------------------------------------------------------------------
+/
+RAIN OR EVAPORATION = YES
+RAIN OR EVAPORATION IN MM PER DAY           : 1
+VALUES OF TRACERS IN THE RAIN               : 0.1  
+/H CLIPPING									: YES
+/MINIMUM VALUE OF DEPTH 					: 0.01
+/
+/
+/----------------------------------------------------------------------
+/                       NUMERICAL OPTIONS
+/----------------------------------------------------------------------
+/
+TREATMENT OF THE LINEAR SYSTEM              : 2  /wave equation
+DISCRETIZATIONS IN SPACE                    : 11; 11
+
+TIDAL FLATS                                 : YES
+OPTION FOR THE TREATMENT OF TIDAL FLATS     : 1
+TREATMENT OF NEGATIVE DEPTHS                : 2 
+
+SOLVER					    				: 1
+SOLVER ACCURACY                             : 1.E-12
+MAXIMUM NUMBER OF ITERATIONS FOR SOLVER     : 5000
+
+PRECONDITIONING			                    : 2
+TYPE OF ADVECTION                           : 13;5;14
+SUPG OPTION                                 : 1;0;1;1
+
+MATRIX STORAGE				    			: 3
+IMPLICITATION FOR DEPTH                     : 0.6
+IMPLICITATION FOR VELOCITY                  : 0.6
+MASS-LUMPING ON H                           : 1
+MASS-LUMPING ON VELOCITY                    : 1
+
+CONTINUITY CORRECTION                       : YES
+FREE SURFACE GRADIENT COMPATIBILITY         : 0.5
+TREATMENT OF FLUXES AT THE BOUNDARIES       : 1;1;1;1 / tracer flux change
+COMPATIBLE COMPUTATION OF FLUXES            : YES
+
+PROPAGATION  :YES
+/VARIABLE TIME STEPS
+/DESIRED COURANT NUMBER						: 5
+/
+/
+/----------------------------------------------------------------------
+/                       TURBULENCE MODEL
+/----------------------------------------------------------------------
+/
+TURBULENCE MODEL                            : 1
+VELOCITY DIFFUSIVITY                        : 0.1
+/
+/
+/--------------------------------------------------------/
+/   FRICTION PARAMETERS                                  /
+/--------------------------------------------------------/
+LAW OF BOTTOM FRICTION                      : 4
+FRICTION COEFFICIENT                        : 0.02
+/
+/
+/--------------------------------------------------------/
+/   Coriolis Force                                  /
+/--------------------------------------------------------/
+CORIOLIS                                    : YES
+CORIOLIS COEFFICIENT                        : 1.01E-4
+/
+/
+/-----------------------------------------------------------------------
+/                               WIND
+/-----------------------------------------------------------------------
+/
+WIND                                         = YES
+OPTION FOR WIND                              = 2
+COEFFICIENT OF WIND INFLUENCE                =  6.3E-5
+/
+/
+/----------------------------------------------------------------------
+/                             TRACEUR
+/----------------------------------------------------------------------
+/
+NUMBER OF TRACERS                           : 1
+NAMES OF TRACERS  					:'SALINITY        KG/M3         '
+INITIAL VALUES OF TRACERS                   : 31.25
+COEFFICIENT FOR DIFFUSION OF TRACERS        : 0.01
+SOLVER FOR DIFFUSION OF TRACERS             : 4
+MAXIMUM NUMBER OF ITERATIONS FOR DIFFUSION OF TRACERS : 60000
+ACCURACY FOR DIFFUSION OF TRACERS           : 1.E-20
+IMPLICITATION COEFFICIENT OF TRACERS        : 0.6
+OPTION FOR THE DIFFUSION OF TRACERS         : 1
+MASS-LUMPING ON TRACERS                     : 1
+/
+
